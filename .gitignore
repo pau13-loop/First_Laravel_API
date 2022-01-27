@@ -1,3 +1,16 @@
+#### COMPOSER ####
+
+/public/hot
+/public/storage
+/storage/*.key
+.env
+.env.backup
+docker-compose.override.yml
+/.idea
+/.vscode
+
+#### VSCODE .gitignore LARAVEL TEMPLATE ####
+
 /vendor/
 node_modules/
 npm-debug.log
