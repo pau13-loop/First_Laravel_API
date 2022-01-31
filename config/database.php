@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'test_simulacion_db'),
 
     /*
     |--------------------------------------------------------------------------
@@ -35,6 +35,22 @@ return [
 
     'connections' => [
 
+        'test_simulacion_db' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => 'g1.ifc33b.cifpfbmoll.eu',
+//            'host' => '127.0.0.1',
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'simulacion_db'),
+            'username' => env('DB_USERNAME', 'simulacion_usr'),
+            'password' => env('DB_PASSWORD', 'abc123.'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+        
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
