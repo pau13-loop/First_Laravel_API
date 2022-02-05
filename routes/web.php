@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 //     return 'welcome';
 // });
 
+
+
 // APRENDIBLE
 
 Route::get('/', function() {
@@ -77,3 +79,27 @@ Route::get('/contenido', function() {
     echo "<a href='" . route('creadores') . "'>Creadores 2</a><br>";
     echo "<a href='" . route('creadores') . "'>Creadores 3</a><br>";
 });
+
+
+// RETURN HTML VIEWS
+
+/**
+ * Como utilizamos el método .view() no tenemos que especificar la ruta completa al archivo html ya que laravel buscará dentro del directorio /resources/views para obentener el documento que queremos devolver.
+ * 
+ * NO tenemos que agregar la extensión del archivo
+ */
+Route::get('/', function() {
+    // return view('resource/views/home.blade.php');
+
+    // De este modo le pasamos la información a la vista, de las siguientes maneras:
+    $nombre = "Jorge";
+    return view('home')->with('nombre', $nombre);
+    // return view('home')->with(['nombre' => $nombre]);
+    // return view('home', ['nombre' => $nombre]);
+})->name('home');
+
+// O otra forma mucho más simplificada sería de la siguiente forma:
+    Route::view('/home', 'home', ['nombre' => 'Jorge'])->name('simplified_home');
+    Route::view('/about', 'about')->name('about');
+    Route::view('/portfolio', 'portfolio')->name('portfolio');
+    Route::view('/contact', 'contact')->name('contact');
