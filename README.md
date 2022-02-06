@@ -3,11 +3,6 @@ First PHP API developed with Laravel Framework following the free course from th
 
 # Quick Notes
 
-### Create project 
-`composer create-project laravel/laravel First_Laravel_API`
-
-# To work with this project
-
 ###### Create project 
 `composer create-project laravel/laravel First_Laravel_API`
 
@@ -25,6 +20,12 @@ First PHP API developed with Laravel Framework following the free course from th
 
 ###### Make a controller
 > `php artisan make:controller api_userController --api`
+
+###### Make controller
+> `php artisan make: controller Eliminame --resource`
+
+###### Show endpoints
+> `php artisan r:l -c --name=cuentas`
 
 ###### Create miration, model and seeder at the same time
 ```
@@ -90,12 +91,27 @@ Acuerdate de incluirl cualquier seeder en el archivo `DatabaseSeeder.php`:
     }
 ```
 
-# Directory Strucutre
+## XDebug issues
 
-### app
+> https://github.com/microsoft/vscode-remote-try-php/issues/11
 
-Source code of application and classes of pur program
+Recuerda a levantar el server del XDebug primero y después arranca la aplicación para evitar el siguiente log de errores:
+`Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port) :-(`
 
-### bootstrap
+# Route
 
-Run
+Definiremos los endpoints de nuestra aplicación.
+
+Con `php artisan r:l` podemos ver todos los endpoints de nuestra aplicación
+
+# Controllers
+
+Para crear un controllador con un unico método, por defecto se le llama __invoke(), ejectuar:
+> `php make:controller PortfolioController -i`
+
+Para crear un controllador tipo resource con todos los métodos necesarios para una api:
+> `php make:controller PortfolioController -r`
+
+# Composer.json
+
+Para indicar a Laravel que compile de nuevo en el caso de que hayamos modificado el archivo `compose.json`, tenemos que ejecutar el comando: `composer dumpautoload`
