@@ -107,7 +107,11 @@ Route::get('/', function() {
     //* Old
     // Route::view('/contact', 'contact', compact('contactos'))->name('contact');
     //* New
-    Route::get('/contact', 'App\Http\Controllers\ContactoController@index')->name('contact');
+    // Route::get('/contact', 'App\Http\Controllers\ContactoController@index')->name('contact');
+
+    //WORKING WITH FORM
+    Route::view('/contact', 'contact')->name('contact');
+    Route::post('/contact', 'App\Http\Controllers\FormContactController@store');
 
     //* Old
     // Route::view('/portfolio', 'portfolio', compact('portfolio'))->name('portfolio');
