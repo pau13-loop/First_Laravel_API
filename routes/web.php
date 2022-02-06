@@ -81,8 +81,8 @@ Route::get('/contenido', function() {
 });
 
 
-// RETURN HTML VIEWS
 
+// RETURN HTML VIEWS
 /**
  * Como utilizamos el método .view() no tenemos que especificar la ruta completa al archivo html ya que laravel buscará dentro del directorio /resources/views para obentener el documento que queremos devolver.
  * 
@@ -98,15 +98,27 @@ Route::get('/', function() {
     // return view('home', ['nombre' => $nombre]);
 })->name('home');
 
+
+
 // O otra forma mucho más simplificada sería de la siguiente forma:
     Route::view('/home', 'home', ['nombre' => 'Jorge'])->name('simplified_home');
     Route::view('/about', 'about')->name('about');
-    Route::view('/contact', 'contact')->name('contact');
-    
-    // old
-    // Route::view('/portfolio', 'portfolio', compact('portfolio'))->name('portfolio');
-    //new
-    // Route::get('portfolio', [PortfolioController::class, 'index']);
 
-    // Ninguna de las dos anteriores funciona
-    Route::get('portfolio', 'App\Http\Controllers\PortfolioController@__invoke');
+    //* Old
+    // Route::view('/contact', 'contact', compact('contactos'))->name('contact');
+    //* New
+    Route::get('/contact', 'App\Http\Controllers\ContactoController@index')->name('contact');
+
+    //* Old
+    // Route::view('/portfolio', 'portfolio', compact('portfolio'))->name('portfolio');
+    //* New
+    // Route::get('portfolio', [PortfolioController::class, 'index']);
+    //! Ninguna de las dos anteriores funciona
+    //TODO: Explicación
+    /**
+     * No me funcionaba porque me faltaba añadir la carpeta app al autoloader de php, para que al iniciar cargue todas las clases de los directorios indicados
+     */
+    Route::get('portfolio', 'App\Http\Controllers\PortfolioController@__invoke')->name('portfolio');
+
+    // Resource
+    // Route::resource('contact', 'App\Http\Controllers\ContactoController')->only(['index', 'show']);
