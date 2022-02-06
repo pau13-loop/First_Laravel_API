@@ -98,15 +98,15 @@ Route::get('/', function() {
     // return view('home', ['nombre' => $nombre]);
 })->name('home');
 
-$portfolio = [
-    ['title' => 'Proyecto 1'],
-    ['title' => 'Proyecto 2'],
-    ['title' => 'Proyecto 3'],
-    ['title' => 'Proyecto 4']
-];
-
 // O otra forma mucho más simplificada sería de la siguiente forma:
     Route::view('/home', 'home', ['nombre' => 'Jorge'])->name('simplified_home');
     Route::view('/about', 'about')->name('about');
-    Route::view('/portfolio', 'portfolio', compact('portfolio'))->name('portfolio');
     Route::view('/contact', 'contact')->name('contact');
+    
+    // old
+    // Route::view('/portfolio', 'portfolio', compact('portfolio'))->name('portfolio');
+    //new
+    // Route::get('portfolio', [PortfolioController::class, 'index']);
+
+    // Ninguna de las dos anteriores funciona
+    Route::get('portfolio', 'App\Http\Controllers\PortfolioController@__invoke');

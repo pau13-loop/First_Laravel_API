@@ -36,11 +36,22 @@
 
     {{-- Otra forma de la cual podemos validar es utilizando un forelse, esto quiere decir que cuando la variable 'titulo' se encuentre vacia mostrará un mensaje --}}
     <ul>
-        @forelse ($portfolio as $portfolioItem)
-            <li>{{ $portfolioItem['title'] }}</li>
+        @forelse ($portfolio as $portfolioItem) 
+        {{-- Implementación de la variable LOOP --}}
+            <li>{{ $portfolioItem['title'] }}<small>{{ $loop->first ? 'Es el primero' : '' }}</small></li>
         @empty
             <li>No hay proyectos para mostrar</li>
         @endforelse
     </ul>
+
+    {{-- ESTRUCTURAS DE DATOS MÁS COMÚNES --}}
+{{-- 
+    @for()
+    @endfor()
+
+    @while()
+    @endwhile()
+
+    @switch() --}}
 
 @endsection
