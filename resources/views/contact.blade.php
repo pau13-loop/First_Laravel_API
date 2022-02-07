@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1>Contact</h1>
+    <h1>{{ __('Contact') }}</h1>
 
     {{-- Implementación de la variable LOOP --}}
     {{-- <ul>
@@ -43,7 +43,7 @@
         {!! $errors->first('content', '<small>:message</small><br>') !!}
 
 
-        <button>Enviar</button>
+        <button>@lang('Send')</button>
     </form>
 
 @endsection
